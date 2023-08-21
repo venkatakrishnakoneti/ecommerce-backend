@@ -1,7 +1,7 @@
-import express from "express";
+const express = require("express");
 const router = express.Router()
-
-router.route("/").get().post()
-router.route("/:id").put().delete()
+const {createProduct, getProduct} = require("../controllers/productsController")
+router.route("/").post(createProduct).get(getProduct)
+// router.route("/:id").put().delete()
 
 module.exports = router

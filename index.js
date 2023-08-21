@@ -1,7 +1,7 @@
-import express from "express"
-import cors from "cors"
-import dotenv from "dotenv"
-import connectDB from "./database/database"
+const express = require("express")
+const cors = require("cors")
+const dotenv = require("dotenv")
+const connectDB = require("./database/database")
 
 const app = express()
 
@@ -20,16 +20,18 @@ app.listen(port, ()=>{
 connectDB()
 
 app.get("/", (req,res)=>{
- res.json("Home route")
+ res.send("welcome to the e-commerce backend")
 })
 
+// auth route
+// app.use("/api/user", authRoute)
 // products route
+const productsRoute = require("./routes/productsRoute")
 app.use("/api/products", productsRoute);
 // category Route
+const categoryRoute = require("./routes/categoryRoute")
 app.use("/api/category", categoryRoute)
 // cart route
 // app.use("/api/cart", cartRoute)
 // order route
 // app.use("/api/order", orderRoute)
-// auth route
-app.use("/api/user", authRoute)

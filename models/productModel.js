@@ -1,10 +1,10 @@
-import mongoose from "mongoose"
+const mongoose = require('mongoose')
 
 const productModel = mongoose.Schema({
-    category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Category"
-    },
+    // category: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Category"
+    // },
     title: {
         type: String,
         required: true
