@@ -23,8 +23,12 @@ app.get("/", (req,res)=>{
  res.send("welcome to the e-commerce backend")
 })
 
-// auth route
-// app.use("/api/user", authRoute)
+// user route
+const userRoute = require("./routes/userRoute")
+app.use("/api/user", userRoute)
+// user route
+const adminRoute = require("./routes/adminRoute")
+app.use("/api/user/admin", adminRoute)
 // products route
 const productsRoute = require("./routes/productsRoute")
 app.use("/api/products", productsRoute);
