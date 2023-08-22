@@ -1,8 +1,8 @@
 
-async (req, res) => {
+const cartController = async (req, res) => {
     const { productId, quantity, name, price } = req.body;
 
-    let userId //TODO: the logged in user id
+    const userId = req.user._id //TODO: the logged in user id
 
     try {
         let cart = await Cart.findOne({ userId });
@@ -36,3 +36,5 @@ async (req, res) => {
         res.status(500).send("Something went wrong");
     }
 };
+
+module.exports = cartController
