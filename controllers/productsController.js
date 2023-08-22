@@ -1,13 +1,16 @@
 const Product = require("../models/productModel")
-
+const Category = require("../models/categoryModel")
 const createProduct = async (req,res)=>{
+    const {title, description, productImage, price, cat, availability} = req.body
+    const getCategory = await Category.find({name:cat})
     try{
         const newProduct = {
-            title:req.body.title,
-            description:req.body.description,
-            productImage:req.body.productImage,
-            price:req.body.price,
-            availability:req.body.availability
+            title,
+            description,
+            productImage,
+            price,
+            category:getCategory._id,
+            availability
         }
         await Product.create(newProduct)
         res.json("product successfully created")
